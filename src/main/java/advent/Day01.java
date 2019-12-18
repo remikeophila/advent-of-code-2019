@@ -1,4 +1,4 @@
-package day01;
+package advent;
 
 import java.io.IOException;
 import java.nio.file.Files;
