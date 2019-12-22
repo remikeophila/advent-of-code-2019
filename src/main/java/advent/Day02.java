@@ -61,7 +61,6 @@ public class Day02 {
         Day02 day02 = new Day02();
 
         System.out.println("part 1 : " + day02.gravityAssist(array, 12, 2));
-        System.out.println("part 1 : " + day02.gravityAssist(array, 12, 2));
 
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length; j++) {
