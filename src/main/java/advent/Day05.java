@@ -1,5 +1,7 @@
 package advent;
 
+import jdk.dynalink.Operation;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -15,6 +17,10 @@ public class Day05 {
         MULTIPLY(3),
         INPUT(1),
         OUTPUT(1),
+        JUMP_IF_TRUE(2),
+        JUMP_IF_FALSE(2),
+        LESS_THAN(3),
+        EQUALS(3),
         NONE(0),
         EXIT(0);
 
@@ -34,6 +40,10 @@ public class Day05 {
                 case 2: return MULTIPLY;
                 case 3: return INPUT;
                 case 4: return OUTPUT;
+                case 5: return JUMP_IF_TRUE;
+                case 6: return JUMP_IF_FALSE;
+                case 7: return LESS_THAN;
+                case 8: return EQUALS;
                 case 99: return EXIT;
                 default: return NONE;
             }
@@ -172,7 +182,7 @@ public class Day05 {
         return operationType;
     }
 
-    private static void sumOrMult(int[] input, int position, OperationType operationType) {
+    public static void sumOrMult(int[] input, int position, OperationType operationType) {
         int op1;
         if (operationType.getFirstParameterType() == ParameterType.POSITION) {
             int op1Position = input[position + 1];
@@ -180,7 +190,6 @@ public class Day05 {
         } else {
             op1 = input[position + 1];
         }
-
 
         int op2;
         if (operationType.getSecondParameterType() == ParameterType.POSITION) {
@@ -203,7 +212,7 @@ public class Day05 {
         input[resultPosition] = result;
     }
 
-    private static void readInput(int[] input, int position, OperationType operationType) {
+    public static void readInput(int[] input, int position, OperationType operationType) {
         System.out.println("Enter a number: ");
         Scanner in = new Scanner(System.in);
         int value = Integer.parseInt(in.next());
@@ -217,7 +226,7 @@ public class Day05 {
         input[adressToStore] = value;
     }
 
-    private static void output(int[] input, int position, OperationType operationType) {
+    public static void output(int[] input, int position, OperationType operationType) {
         int adressToRead;
         if (operationType.getFirstParameterType() == ParameterType.POSITION) {
             adressToRead = input[position + 1];
@@ -226,6 +235,24 @@ public class Day05 {
         }
         System.out.println("Value at Input["+adressToRead+"] = "+input[adressToRead]);
     }
+
+    public static void jumpIfTrue(int[] input, int position, OperationType operationType) {
+
+    }
+
+    public static void jumpIfFalse(int[] input, int position, OperationType operationType) {
+
+    }
+
+    public static void lessThan(int[] input, int position, OperationType operationType) {
+
+    }
+
+    public static void equals(int[] input, int position, OperationType operationType) {
+
+    }
+
+
 
     public static void compute(int[] input) {
         int currentPosition = 0;

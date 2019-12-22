@@ -29,4 +29,28 @@ public class Day05Test {
         Day05.OperationType operationType = Day05.parseOperationType(exampleOpCode);
         assertEquals(Day05.ParameterType.POSITION, operationType.getThirdParameterType());
     }
+
+    @Test
+    public void jumpIfTrue_nonZeroValue_position() {
+        int[] input = {5, 3, 4, 5, -1};
+        Day05.OperationType operationType = new Day05.OperationType(Day05.OpType.JUMP_IF_FALSE,
+                Day05.ParameterType.POSITION,
+                Day05.ParameterType.POSITION,
+                Day05.ParameterType.POSITION);
+        Day05.jumpIfTrue(input, 0, operationType);
+
+        assertEquals(5, input[4]);
+    }
+
+    @Test
+    public void jumpIfTrue_nonZeroValue_immediate() {
+        int[] input = {5, 3, 4, 5, -1};
+        Day05.OperationType operationType = new Day05.OperationType(Day05.OpType.JUMP_IF_FALSE,
+                Day05.ParameterType.IMMEDIATE,
+                Day05.ParameterType.IMMEDIATE,
+                Day05.ParameterType.POSITION);
+        Day05.jumpIfTrue(input, 0, operationType);
+
+        assertEquals(3, input[4]);
+    }
 }
